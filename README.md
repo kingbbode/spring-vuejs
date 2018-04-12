@@ -1,6 +1,6 @@
 # Spring + Vue.js
 
-스프링과 뷰가 어떻게 한 프로젝트 안에서 동작할 수 있을지 잡아본 구조이다. (꼭 Vue가 아니더라도, 어떠한 프로젝트라도 관계없다)
+스프링과 뷰가 어떻게 한 프로젝트 안에서 동작할 수 있을지 잡아본 구조이다. (꼭 Vue가 아니더라도, 어떠한 Frontend 라도 관계없다)
 
 ![의뢰인](./images/app.png)
  
@@ -20,7 +20,7 @@
     
 - Webpack 의 bundle 최종 경로가, Spring 의 resource static path 를 향하도록 한다. 
     - 최종 bundle 된 파일을 다시 copy 하는 불필요한 행위를 줄여줄 수 있다. 
-    - webpack devtools 환경과 함께 사용하면, 스프링에서는 동일한 로직으로 운영, 개발 등 환경을 운영할 수 있다. (Backend Template 에서 js, css 등의 파일명을 교체하거나 경로를 조작하는 불필요한 행위를 줄여줄 수 있다.)
+    - webpack devServer 환경과 함께 사용하면, 스프링에서는 동일한 로직으로 운영, 개발 등 환경을 운영할 수 있다. (Backend Template 에서 js, css 등의 파일명을 교체하거나 경로를 조작하는 불필요한 행위를 줄여줄 수 있다.)
 
 ```js
     entry: {
@@ -38,11 +38,14 @@
 
 1. Spring WebApplication 을 구동한다.
 
-2. 터미널에서 `npm run start` 를 실행하여 webpack devtools 를 구동한다.
+2. 터미널에서 `npm run start` 를 실행하여 webpack devServer 를 구동한다.
     
 - 이 프로젝트의 `package.json` 에는 webpack 을 구동하는 script 를 선언해두었다. `start` 명령도 그 중 하나이다.
+    - start : webpack devServer 구동
+    - dev : 개발 환경 webpack - 압축, 난독화되지 않은 번들 파일 생성.
+    - build : 운영 환경 webpack - 압축, 난독화된 번들 파일 생성.
 
-3. spring devtools 와 webpack devtools 환경에서 양쪽을 오가며 실시간으로 개발을 한다.
+3. spring devtools 와 webpack devServer 환경에서 양쪽을 오가며 실시간으로 개발을 한다.
 
 ## 빌드
 
