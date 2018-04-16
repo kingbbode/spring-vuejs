@@ -4,9 +4,7 @@
         <div class="app-main page-container md-layout-row">
             <md-app>
                     <md-app-content>
-                        <user-list :users="users"/>
-                        <user-info/>
-                        <todo-list/>
+                        <router-view :user="this.$route.params.user || ''"/>
                     </md-app-content>
             </md-app>
         </div>
@@ -16,24 +14,13 @@
 
 <script>
     import MainHeader from "./template/MainHeader.vue"
-    import UserInfo from "./components/UserInfo.vue"
-    import TodoList from "./components/TodoList.vue"
-    import UserList from "./components/UserList.vue"
     import MainFooter from "./template/MainFooter.vue";
 
     export default {
         name: "app",
-        data() {
-            return {
-                users : ['kingbbode', 'jojoldu']
-            }
-        },
         components: {
             'main-footer' : MainFooter,
-            'main-header': MainHeader,
-            'user-list' : UserList,
-            'user-info' : UserInfo,
-            'todo-list' : TodoList
+            'main-header': MainHeader
         }
     }
 </script>

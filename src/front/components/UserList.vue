@@ -24,7 +24,7 @@
         props: ['users'],
         methods : {
             fetchInfo(user) {
-                this.$store.dispatch('userInfo/fetchInfo', { name : user })
+                this.$router.push({ path: '/' + user })
             }
         }
     }
